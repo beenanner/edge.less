@@ -1,0 +1,117 @@
+// FILE: mixinCore.less
+// PURPOSE: helpers and mixins, defines functions for grouping browser specific styles and common sets of styles
+//          can be use separately or with mixinExtended
+// EXAMPLES: all browser gradient prefixes
+// DEPENDANCY: none
+
+// Rounded Corners
+//-----------------------------------------------------------
+.borderRadius(@radius: 4px){
+    -webkit-border-radius:@arguments;
+    -moz-border-radius:@arguments;
+    border-radius:@arguments;
+}
+
+// Top-to-Bottom Gradient
+//-----------------------------------------------------------
+.gradientV(@startColor: #FFFFFF, @endColor: #FFFFFF, @img: none){
+    -o-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -webkit-background-size: auto auto !important;
+    background-size: 100% 100%;
+
+    background: lighten(@endColor, 50%), @img; // Old browsers
+    background: @img, -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+    background: @img, -moz-linear-gradient(top, @startColor 0, @endColor 100%); // FF3.6+
+    background: @img, -webkit-gradient(linear, left top, left bottom, color-stop(0,@startColor), color-stop(100%,@endColor)); // Chrome,Safari4+
+    background: @img, -webkit-linear-gradient(top, @startColor 0,@endColor 100%); // Chrome10+,Safari5.1+
+    background: @img, -o-linear-gradient(top, @startColor 0,@endColor 100%); // Opera11.10+
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=%d,endColorstr=%d)", @startColor, @endColor)); // IE 6-7
+    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=%d, endColorstr=%d)", @startColor, @endColor); // IE 8-9
+    background: @img, -ms-linear-gradient(top, @startColor 0,@endColor 100%); // IE10+
+    background: @img, linear-gradient(top, @startColor 0,@endColor 100%); // W3C
+}
+
+// Left-to-Right Gradient
+//-----------------------------------------------------------
+.gradientH(@startColor: #FFFFFF, @endColor: #FFFFFF, @img: none){
+    -o-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -webkit-background-size: auto auto !important;
+    background-size: 100% 100%;
+
+    background: lighten(@endColor, 50%), @img; // Old browsers
+    background: @img, -khtml-gradient(linear, left top, right top, from(@startColor), to(@endColor));
+    background: @img, -moz-linear-gradient(left, @startColor 0%, @endColor 100%); // FF3.6+
+    background: @img, -webkit-gradient(linear, left top, right top, color-stop(0%,@startColor), color-stop(100%,@endColor)); // Chrome,Safari4+
+    background: @img, -webkit-linear-gradient(left, @startColor 0%,@endColor 100%); // Chrome10+,Safari5.1+
+    background: @img, -o-linear-gradient(left, @startColor 0%,@endColor 100%); // Opera11.10+
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=%d,endColorstr=%d)", @startColor, @endColor)); // IE 6-7
+    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=%d, endColorstr=%d)", @startColor, @endColor);  // IE 8-9
+	background: @img, -ms-linear-gradient(left, @startColor, @endColor); // IE10+
+    background: linear-gradient(left, @startColor 0%,@endColor 100%); // W3C
+}
+
+// Text shadow
+//-----------------------------------------------------------
+.textShadow (@shadow:1px 1px 1px rgba(0,0,0,.25)){
+	-moz-text-shadow: @shadow;
+	-webkit-text-shadow: @shadow;
+	-khtml-text-shadow: @shadow;
+	text-shadow: @shadow;
+}
+
+// Box shadows
+//-----------------------------------------------------------
+.boxShadow (@shadow: 2px 2px 3px rgba(0,0,0,.25)) {
+    -webkit-box-shadow: @shadow;
+    -moz-box-shadow: @shadow;
+    box-shadow: @shadow;
+}
+
+.boxShadow2 (@shadow: 0 1px 0 rgba(255, 255, 255, 0.25), @shadow2: 0 1px 3px rgba(0, 0, 0, 0.25) inset) {
+    -webkit-box-shadow: @shadow, @shadow2;
+    -moz-box-shadow: @shadow, @shadow2;
+    box-shadow: @shadow, @shadow2;
+}
+
+.boxShadow3 (@shadow: -1px 0 1px rgba(0,0,0,0.7) inset, @shadow2: 1px 1px 1px rgba(0,0,0,0.35) inset, @shadow3: 0 1px 3px rgba(0,0,0,0.4) inset) {
+    -webkit-box-shadow: @shadow, @shadow2, @shadow3;
+    -moz-box-shadow: @shadow, @shadow2, @shadow3;
+    box-shadow: @shadow, @shadow2, @shadow3;
+}
+
+// Opacity
+//-----------------------------------------------------------
+.opacity(@opacity: 100) {
+    filter: e(%("alpha(opacity=%d)", @opacity));
+    -ms-filter: %("progid:DXImageTransform.Microsoft.Alpha(Opacity=%d)", @opacity);
+    -khtml-opacity: @opacity / 100;
+    -moz-opacity: @opacity / 100;
+    opacity: @opacity / 100;
+}
+
+// Text decoration and font styles
+//-----------------------------------------------------------
+.fancy() {font-style:italic;}
+.normal() {font-style:normal;font-weight:normal;}
+.heavy() {font-weight:bold;}
+.caps() {text-transform:capitalize;}
+.upperCase() {text-transform: uppercase;}
+.lowerCase() {text-transform: lowercase;}
+
+
+// clearfix
+//-----------------------------------------------------------
+.clearfix(){
+  zoom: 1;
+  _display:inline-block;
+  
+  &:after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}

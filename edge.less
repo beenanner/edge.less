@@ -1,0 +1,44 @@
+// FILE: edge.less
+// PURPOSE: a simple scalable grid system for all your website needs
+// EXAMPLES: columns
+// DEPENDANCY: none
+
+// initial variables that define the grid
+@columns: 12;
+@columnWidth: 60px;
+@gutterWidth: 20px;
+
+
+// calculated grid variables
+@totalWidth: (@columnWidth + @gutterWidth) * @columns + @gutterWidth;
+@halfGutterWidth: @gutterWidth / 2;
+@allInnerGutters: (@gutterWidth * (@columns - 1));
+@outerGutters: (@totalWidth - (@columns * (@columnWidth + @gutterWidth) - @gutterWidth));
+@allColumns: @columns * (@columnWidth + @gutterWidth) - @gutterWidth;
+
+
+// content container class in page-width, centered
+.container{
+    width: @totalWidth;
+    margin: 0 auto;
+    .clearfix();
+}
+
+// .column, .column(x), .column(x,0), .column(x,0,0)
+.column(@cols:1, @margin-right:@halfGutterWidth, @margin-left:@halfGutterWidth){
+    width: @cols * (@columnWidth + @gutterWidth) - @gutterWidth;
+    float: left;
+    margin: 0 (@margin-right+0px) 0 (@margin-left+0px);
+}
+
+// column spans
+@col2: 2 * (@columnWidth + @gutterWidth) - @gutterWidth;
+@col3: 3 * (@columnWidth + @gutterWidth) - @gutterWidth;
+@col4: 4 * (@columnWidth + @gutterWidth) - @gutterWidth;
+@col5: 5 * (@columnWidth + @gutterWidth) - @gutterWidth;
+@col6: 6 * (@columnWidth + @gutterWidth) - @gutterWidth;
+@col7: 7 * (@columnWidth + @gutterWidth) - @gutterWidth;
+@col8: 8 * (@columnWidth + @gutterWidth) - @gutterWidth;
+@col9: 9 * (@columnWidth + @gutterWidth) - @gutterWidth;
+@col10: 10 * (@columnWidth + @gutterWidth) - @gutterWidth;
+@col11: 11 * (@columnWidth + @gutterWidth) - @gutterWidth;

@@ -1,0 +1,90 @@
+// FILE: patterns.less
+// PURPOSE: define reusable solutions to a commonly occurring problem within a given context
+// EXAMPLES: gradient colors and corresponding shadows, common border radius
+// DEPENDANCY: colors, mixinCore
+
+
+// Shadows
+//-----------------------------------------------------------
+
+// shadow1 ideal for 140x100
+.shadow1(){
+
+    position:relative;
+    z-index:1;
+    height: 100px;
+
+    &:after{
+        content:'';
+        z-index:-1;
+        position:absolute;
+        background:transparent;
+        width:70%;
+        height:55%;
+        right:10%;
+        bottom:8%;
+        -webkit-transform:skew(15deg) rotate(3deg);
+        -moz-transform:skew(15deg) rotate(3deg);
+        -o-transform:skew(15deg) rotate(3deg);
+        -ms-transform:skew(15deg) rotate(3deg);
+        .boxShadow(0 10px 5px rgba(0, 0, 0, 0.3));
+    }
+}
+
+// For the small imgs
+.shadow2(){
+
+    position:relative;
+    z-index:1;
+
+    &:after{
+        content:'';
+        z-index:-1;
+        position:absolute;
+        background:transparent;
+        width:70%;
+        height:55%;
+        right:16%;
+        bottom:18%;
+        -webkit-transform:skew(15deg) rotate(5deg);
+        -moz-transform:skew(15deg) rotate(5deg);
+        -o-transform:skew(15deg) rotate(5deg);
+        -ms-transform:skew(15deg) rotate(5deg);
+        .boxShadow(0 10px 5px rgba(0, 0, 0, 0.45));
+    }
+}
+
+// Gradients
+//-------------------------------------------------------
+.redGradient(@image){
+    .gradientV(@siteBG-R1, @siteBG-R2, @image);
+    color:@white;
+    border: 1px solid @siteBG-R1;
+    border-bottom:none;
+    .boxShadow2(0 1px 0 #4F0100, 0 1px 0 0 rgba(255,255,255,.4) inset);
+    .textShadow(0 -1px 0 rgba(0,0,0,.37));
+}
+
+.blackGradient(@image){
+    .gradientV(@siteBG-D1, @siteBG-D2, @image);
+    color:@white;
+    border: 1px solid #3C3C3E;
+    .boxShadow2(0 1px 0 #212122, 0 1px 0 0 rgba(255,255,255,.4) inset);
+    .textShadow(0 -1px 0 rgba(0,0,0,.37));
+}
+
+.silverGradient(@image){
+    .gradientV(@siteBG-L1, @siteBG-L2, @image);
+    color:@siteTextP;
+    border: 1px solid #A7A7A8;
+    .boxShadow2(0 1px 0 #8B8B90, 0 1px 0 0 rgba(255,255,255,.4) inset);
+    .textShadow(0 1px 0 rgba(255, 255, 255, 0.37));
+}
+
+.greenGradient(@image){
+    .gradientV(@siteBG-G1, @siteBG-G2, @image);
+    color:@white;
+    border-top: 1px solid @siteBG-G1;
+    .boxShadow(0 1px 1px 0 rgba(255,255,255,.37) inset);
+    .textShadow(0 -1px 0 rgba(0, 0, 0, 0.4));
+}

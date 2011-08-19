@@ -1,0 +1,60 @@
+// FILE: mixinExtended.less
+// PURPOSE: extends mixinCore with less common sets of styles
+// EXAMPLES: columns, transitions
+// DEPENDANCY: theForce.less
+
+
+// Transitions
+//-----------------------------------------------------------
+.transition(@params){
+  -moz-transition: @params; // FF4+
+  -o-transition: @params; // Opera 10.5+
+  -webkit-transition: @params; // Safari 3.2+, Chrome
+  -ms-transition: @params; // IE10
+  transition: @params; // CSS3
+}
+
+// Transformations
+//-----------------------------------------------------------
+.skew(@angle_x:35, @angle_y:0){
+    -webkit-transform: skew(formatstring("{0}deg", @angle_x), formatstring("{0}deg", @angle_y));
+    -moz-transform: skew(formatstring("{0}deg", @angle_x), formatstring("{0}deg", @angle_y));
+    -o-transform: skew(formatstring("{0}deg", @angle_x), formatstring("{0}deg", @angle_y));
+    -ms-transform: skew(formatstring("{0}deg", @angle_x), formatstring("{0}deg", @angle_y));
+    transform: skew(formatstring("{0}deg", @angle_x), formatstring("{0}deg", @angle_y));
+}
+
+.scale(@scale: 1){
+    -webkit-transform: scale(@scale);
+    -moz-transform: scale(@scale);
+    -o-transform: scale(@scale);
+    -ms-transform: scale(@scale);
+    transform: scale(@scale);
+}
+
+.rotate(@deg:35){
+    -webkit-transform: rotate(formatstring("{0}deg", @deg));
+    -moz-transform: rotate(formatstring("{0}deg", @deg));
+    -o-transform: rotate(formatstring("{0}deg", @deg));
+    -ms-transform: rotate(formatstring("{0}deg", @deg));
+    transform: rotate(formatstring("{0}deg", @deg));
+}
+
+.translate(@move_x: 10px, @move_y: 10px){
+    -webkit-transform: translate(@move_x, @move_y);
+    -moz-transform: translate(@move_x, @move_y);
+    -o-transform: translate(@move_x, @move_y);
+    -ms-transform:translate(@move_x, @move_y);
+    transform: translate(@move_x, @move_y);
+}
+
+// CSS3 Content Columns
+//-----------------------------------------------------------
+.contentColumns(@column_count: 2, @column_gap: @gutterWidth){
+  -webkit-column-count: @column_count;
+  -webkit-column-gap: @column_gap;
+  -moz-column-count: @column_count;
+  -moz-column-gap: @column_gap;
+  column-count: @column_count;
+  column-gap: @column_gap;
+}
