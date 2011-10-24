@@ -1,7 +1,7 @@
 // FILE: mixinExtended.less
 // PURPOSE: extends mixinCore with less common sets of styles
 // EXAMPLES: columns, transitions
-// DEPENDANCY: theForce.less
+// DEPENDANCY: edge.less
 
 
 // Transitions
@@ -16,12 +16,12 @@
 
 // Transformations
 //-----------------------------------------------------------
-.skew(@angle_x:35, @angle_y:0){
-    -webkit-transform: skew(formatstring("{0}deg", @angle_x), formatstring("{0}deg", @angle_y));
-    -moz-transform: skew(formatstring("{0}deg", @angle_x), formatstring("{0}deg", @angle_y));
-    -o-transform: skew(formatstring("{0}deg", @angle_x), formatstring("{0}deg", @angle_y));
-    -ms-transform: skew(formatstring("{0}deg", @angle_x), formatstring("{0}deg", @angle_y));
-    transform: skew(formatstring("{0}deg", @angle_x), formatstring("{0}deg", @angle_y));
+.skew(@x:~"35deg", @y:~"0deg"){
+    -webkit-transform: skew(@x, @y);
+    -moz-transform: skew(@x, @y);
+    -o-transform: skew(@x, @y);
+    -ms-transform: skew(@x, @y);
+    transform: skew(@x, @y);
 }
 
 .scale(@scale: 1){
@@ -32,29 +32,29 @@
     transform: scale(@scale);
 }
 
-.rotate(@deg:35){
-    -webkit-transform: rotate(formatstring("{0}deg", @deg));
-    -moz-transform: rotate(formatstring("{0}deg", @deg));
-    -o-transform: rotate(formatstring("{0}deg", @deg));
-    -ms-transform: rotate(formatstring("{0}deg", @deg));
-    transform: rotate(formatstring("{0}deg", @deg));
+.rotate(@deg:~"35deg"){
+    -webkit-transform: rotate(@deg);
+    -moz-transform: rotate(@deg);
+    -o-transform: rotate(@deg);
+    -ms-transform: rotate(@deg);
+    transform: rotate(@deg);
 }
 
-.translate(@move_x: 10px, @move_y: 10px){
-    -webkit-transform: translate(@move_x, @move_y);
-    -moz-transform: translate(@move_x, @move_y);
-    -o-transform: translate(@move_x, @move_y);
-    -ms-transform:translate(@move_x, @move_y);
-    transform: translate(@move_x, @move_y);
+.translate(@x: 10px, @y: 10px){
+    -webkit-transform: translate(@x, @y);
+    -moz-transform: translate(@x, @y);
+    -o-transform: translate(@x, @y);
+    -ms-transform:translate(@x, @y);
+    transform: translate(@x, @y);
 }
 
 // CSS3 Content Columns
 //-----------------------------------------------------------
-.contentColumns(@column_count: 2, @column_gap: @gutterWidth){
-  -webkit-column-count: @column_count;
-  -webkit-column-gap: @column_gap;
-  -moz-column-count: @column_count;
-  -moz-column-gap: @column_gap;
-  column-count: @column_count;
-  column-gap: @column_gap;
+.contentColumns(@columnCount: 2, @columnGap: @gutterWidth){
+  -webkit-column-count: @columnCount;
+  -webkit-column-gap: @columnGap;
+  -moz-column-count: @columnCount;
+  -moz-column-gap: @columnGap;
+  column-count: @columnCount;
+  column-gap: @columnGap;
 }

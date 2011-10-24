@@ -3,11 +3,42 @@
 // EXAMPLES: gradient colors and corresponding shadows, common border radius
 // DEPENDANCY: colors, mixinCore
 
+// Standard border radius
+//-----------------------------------------------------------
+@globalBorderRadius: 4px;
+
+// Dark background hash
+//-----------------------------------------------------------
+.darkHatch(){
+    .gradientV(#343434, #0C0C0C, ~"url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACRJREFUeNpifPv2LQMQ8DJAwGcmGANK8zIhy4IImAq4IECAAQAvgQbPcWkgcQAAAABJRU5ErkJggg==') repeat");
+}
+
+// Dividers
+//-----------------------------------------------------------
+.horRuleL(){
+    border-bottom:1px solid @siteDivider-L1;
+    .boxShadow(0 1px 0 @siteDivider-L2);
+}
+
+.horRuleD(){
+    border-bottom:1px solid @siteDivider-D1;
+    .boxShadow(0 1px 0 @siteDivider-D2);
+}
+
+.vertRuleL(){
+    border-right:1px solid @siteDivider-L1;
+    .boxShadow(1px 0 0 @siteDivider-L2);
+}
+
+.vertRuleD(){
+    border-right:1px solid @siteDivider-D1;
+    .boxShadow(1px 0 0 @siteDivider-D2);
+}
 
 // Shadows
 //-----------------------------------------------------------
 
-// shadow1 ideal for 140x100
+// 140x100
 .shadow1(){
 
     position:relative;
@@ -27,11 +58,11 @@
         -moz-transform:skew(15deg) rotate(3deg);
         -o-transform:skew(15deg) rotate(3deg);
         -ms-transform:skew(15deg) rotate(3deg);
-        .boxShadow(0 10px 5px rgba(0, 0, 0, 0.3));
+        .boxShadow(0 10px 5px rgba(0, 0, 0, 0.15));
     }
 }
 
-// For the small imgs
+// 60x49
 .shadow2(){
 
     position:relative;
@@ -59,10 +90,9 @@
 .redGradient(@image){
     .gradientV(@siteBG-R1, @siteBG-R2, @image);
     color:@white;
-    border: 1px solid @siteBG-R1;
-    border-bottom:none;
+    border: 1px solid @siteBG-R2;
     .boxShadow2(0 1px 0 #4F0100, 0 1px 0 0 rgba(255,255,255,.4) inset);
-    .textShadow(0 -1px 0 rgba(0,0,0,.37));
+    .textShadow(0 -1px 0 rgba(0,0,0,.4));
 }
 
 .blackGradient(@image){
@@ -70,21 +100,228 @@
     color:@white;
     border: 1px solid #3C3C3E;
     .boxShadow2(0 1px 0 #212122, 0 1px 0 0 rgba(255,255,255,.4) inset);
-    .textShadow(0 -1px 0 rgba(0,0,0,.37));
+    .textShadow(0 -1px 0 rgba(0,0,0,.8));
 }
 
 .silverGradient(@image){
     .gradientV(@siteBG-L1, @siteBG-L2, @image);
-    color:@siteTextP;
+    color:@siteTextH;
     border: 1px solid #A7A7A8;
     .boxShadow2(0 1px 0 #8B8B90, 0 1px 0 0 rgba(255,255,255,.4) inset);
-    .textShadow(0 1px 0 rgba(255, 255, 255, 0.37));
+    .textShadow(0 1px 0 rgba(255, 255, 255, 0.65));
 }
 
 .greenGradient(@image){
     .gradientV(@siteBG-G1, @siteBG-G2, @image);
     color:@white;
     border-top: 1px solid @siteBG-G1;
-    .boxShadow(0 1px 1px 0 rgba(255,255,255,.37) inset);
+    .boxShadow(0 1px 0 0 rgba(255,255,255,.4) inset);
     .textShadow(0 -1px 0 rgba(0, 0, 0, 0.4));
+}
+
+// Module wrapper
+//-----------------------------------------------------------
+.moduleMixin(){
+    border:1px solid @siteLine;
+    background-color:@siteBackgroundS;
+    .borderRadius();
+}
+
+.moduleHedMixin(){
+    border-left: 1px solid @siteHG-D2;
+    border-right: 1px solid @siteHG-D2;
+    color:@white;
+    padding:6px @gutterWidth 4px;
+    margin: 0 -1px;
+    .blackGradient(none);
+    .borderRadius(@globalBorderRadius @globalBorderRadius 0 0);
+    .sa6();
+    .clearfix();
+
+    h2,h3,h4,h5,h6{
+        font-family:inherit;
+        font-size:inherit;
+        float:left;
+    }
+
+    .toolTipMenu{
+        .s(12,24);
+        .bodyFont();
+        float:right;
+        padding-top: 2px;
+    }
+}
+
+.moduleBodyMixin(){
+    padding: @gutterWidth;
+    text-shadow: 0 1px 0 @white;
+}
+
+// Light Module wrapper
+//-----------------------------------------------------------
+.lightModule(){
+    background:@siteBackgroundP;
+    .boxShadow2(0 1px 3px rgba(0,0,0,.15) inset, 0 1px 0 rgba(255,255,255,.65));
+}
+
+// Rating bars
+//-----------------------------------------------------------
+.ratingScrubbers(){
+    background-color: @siteBackgroundP;
+    .borderRadius();
+    .boxShadow2(0 1px 2px rgba(0, 0, 0, 0.12) inset, 0 1px 0 @white);
+}
+
+.ratingScrubbersDark(){
+    background-color: rgba(0,0,0,.65);
+    .borderRadius();
+    .boxShadow2(0 1px 2px @black inset, 0 1px 0 rgba(253,253,253,.20));
+}
+
+.redBar(){
+    .gradientV(@siteBG-R1, @siteBG-R2, none);
+    border: 1px solid @siteBG-R2;
+    .boxShadow(0 1px 0 0 rgba(255,255,255,.4) inset);
+    .borderRadius();
+    display:block;
+    height:6px;
+}
+
+.blueBar(){
+    .gradientV(#4387CF, #2C67A4, none);
+    border: 1px solid #1E61A8;
+    .boxShadow(0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 -1px 0 #1E548A inset);
+    .borderRadius();
+    display:block;
+    height:6px;
+}
+
+// Promo tags
+//-----------------------------------------------------------
+.promoTagNoBorder(){
+    background-color: @promo;
+    border-top: 1px solid #711011;
+    box-shadow: 0 4px 2px -4px rgba(255, 255, 255, 0.85) inset;
+    position:absolute;
+    top:-2px;
+    padding:6px @gutterWidth 4px;
+    text-transform: uppercase;
+    color:@white;
+    .textShadow(0 -1px 0 #000000);
+    display:inline-block;
+    z-index: 12;
+
+    &:after{
+        background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ bWFnZVJlYWR5ccllPAAAABlJREFUeNpiiOfg/A8EDEwMQJDAyfUfIMAAO/YF4blCeTUAAAAASUVO RK5CYII=") no-repeat 0 0 transparent;
+        content:"";
+        display:block;
+        height: 2px;
+        position: absolute;
+        right: -2px;
+        top: -1px;
+        width: 2px;
+    }
+}
+
+.promoTagBorder(){
+    background-color: @promo;
+    border-top: 1px solid #711011;
+    box-shadow: 0 4px 2px -4px rgba(255, 255, 255, 0.85) inset;
+    position:absolute;
+    top:-3px;
+    padding:6px @gutterWidth 4px;
+    text-transform: uppercase;
+    color:@white;
+    .textShadow(0 -1px 0 #000000);
+    display:inline-block;
+    z-index: 12;
+
+    &:after{
+        background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ bWFnZVJlYWR5ccllPAAAABlJREFUeNpiiOfg/A8EDEwMQJDAyfUfIMAAO/YF4blCeTUAAAAASUVO RK5CYII=") no-repeat 0 0 transparent;
+        content:"";
+        display:block;
+        height: 2px;
+        position: absolute;
+        right: -2px;
+        top: -1px;
+        width: 2px;
+    }
+}
+
+// Comment bubble
+//-----------------------------------------------------------
+.bubble(){
+    display:block;
+    text-align: center;
+    width: 58px;
+    height:40px;
+    padding: 2px 0 0 0 !important;
+    .silverGradient(none);
+    .borderRadius();
+    font-size:10px;
+    .bold();
+    .boxShadow(0 2px 0 #8b8b90);
+    position:relative;
+
+    .countNumber{
+        .s(18,10);
+    }
+
+    &:after{
+        content:"";
+        width: 0;
+        height: 0;
+        border-top: 5px solid @siteBG-L2;
+        border-bottom: 5px solid transparent;
+        border-right:5px solid @siteBG-L2;
+        display: block;
+        position: relative;
+        bottom: -7px;
+        position: absolute;
+        right: 10px;
+    }
+
+    &:before{
+        content:"";
+        width: 0;
+        height: 0;
+        border-top: 5px solid #8b8b90;
+        border-bottom: 5px solid transparent;
+        border-right:5px solid #8b8b90;
+        display: block;
+        position: relative;
+        bottom: -8px;
+        position: absolute;
+        right: 10px;
+    }
+}
+
+// Close button
+.closeButton(){
+    .lowerCase();
+    .accentFont();
+    color:@siteTextG;
+    .textShadow(0 -1px 0 rgba(0, 0, 0, 0.8));
+
+    &:after{
+        content:"(X)";
+        padding-left:2px;
+    }
+
+    &:hover{
+        text-decoration:none;
+        color:@white;
+    }
+}
+
+// Standard gray input
+//---------------------------------------------------------------
+.inputBox(){
+    background-color:@siteBackgroundP;
+    border:1px solid rgba(174,173,173,.5);
+    color:@siteTextI;
+    padding:6px 10px;
+    .borderRadius();
+    .boxShadow2(0 0 4px rgba(147,147,147,.25) inset, 0 1px 0 rgba(255,255,255,.75));
+    .textShadow(0 1px 0 rgba(255,255,255,.65));
 }

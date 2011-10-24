@@ -1,15 +1,21 @@
 // FILE: edge.less
 // PURPOSE: a simple scalable grid system for all your website needs
 // EXAMPLES: columns
-// DEPENDANCY: none
+// DEPENDANCY: mixinCore.less
+
+// Define charset for fancy chars
+//-----------------------------------------------------------
+@charset "UTF-8";
 
 // initial variables that define the grid
+//-----------------------------------------------------------
 @columns: 12;
 @columnWidth: 60px;
 @gutterWidth: 20px;
 
 
 // calculated grid variables
+//-----------------------------------------------------------
 @totalWidth: (@columnWidth + @gutterWidth) * @columns + @gutterWidth;
 @halfGutterWidth: @gutterWidth / 2;
 @allInnerGutters: (@gutterWidth * (@columns - 1));
@@ -17,7 +23,12 @@
 @allColumns: @columns * (@columnWidth + @gutterWidth) - @gutterWidth;
 
 
+body{
+	font-size:0.75em; //12px
+}
+
 // content container class in page-width, centered
+//-----------------------------------------------------------
 .container{
     width: @totalWidth;
     margin: 0 auto;
@@ -25,6 +36,7 @@
 }
 
 // .column, .column(x), .column(x,0), .column(x,0,0)
+//-----------------------------------------------------------
 .column(@cols:1, @margin-right:@halfGutterWidth, @margin-left:@halfGutterWidth){
     width: @cols * (@columnWidth + @gutterWidth) - @gutterWidth;
     float: left;
@@ -32,6 +44,7 @@
 }
 
 // column spans
+//-----------------------------------------------------------
 @col2: 2 * (@columnWidth + @gutterWidth) - @gutterWidth;
 @col3: 3 * (@columnWidth + @gutterWidth) - @gutterWidth;
 @col4: 4 * (@columnWidth + @gutterWidth) - @gutterWidth;

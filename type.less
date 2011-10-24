@@ -4,16 +4,19 @@
 // DEPENDANCY: none
 
 // Body font stack
+//-----------------------------------------------------------
 .bodyFont(){
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: "Trebuchet MS", Helvetica, arial, sans-serif;
 }
 
 // Header font stack
+//-----------------------------------------------------------
 .headerFont(){
     font-family: Georgia, serif
 }
 
-// text scale (base: 12px)
+// Text scale (base: 12px)
+//-----------------------------------------------------------
 @s1:2.833;          //34px
 @s2:2.5;            //30px
 @s3:1.833;          //22px
@@ -26,19 +29,6 @@
 @s10:1;             //12px
 @s11:0.916;         //11px
 @s12:0.833;         //10px
-
-
-// line height scale (base: 12px)
-@l1:1.333;
-@l2:1.166;
-@l3:1.133;
-@l4:1.1;
-@l5:1.06;
-@l6:1
-
-
-// Accent coefficient
-@coef:1.647058823529412;
 
 // Body font sizes (base: 12px)
 //----------------------------------------------------------------
@@ -55,6 +45,25 @@
 .s11() {font-size:(@s11 * 1em);line-height:1.166em;}
 .s12() {font-size:(@s12 * 1em);line-height:1.166em;}
 
+// Header font sizes (base: 12px * coeffcient)
+//-----------------------------------------------------------------
+.hs1() {.headerFont();font-size:(@s1 * 1em);}
+.hs2() {.headerFont();font-size:(@s2 * 1em);}
+.hs3() {.headerFont();font-size:(@s3 * 1em);}
+.hs4() {.headerFont();font-size:(@s4 * 1em);}
+.hs5() {.headerFont();font-size:(@s5 * 1em);}
+.hs6() {.headerFont();font-size:(@s6 * 1em);}
+
+
+// Line height scale (base: 12px)
+//-----------------------------------------------------------
+@l1:1.333;
+@l2:1.166;
+@l3:1.133;
+@l4:1.1;
+@l5:1.06;
+@l6:1
+
 // Line height overrides (base: 12px)
 //-----------------------------------------------------------------
 .l1() {line-height:(@l1 * 1em) !important;}
@@ -64,17 +73,15 @@
 .l5() {line-height:(@l5 * 1em) !important;}
 .l6() {line-height:(@l6 * 1em) !important;}
 
-// Header font sizes (base: 12px * coeffcient)
-//-----------------------------------------------------------------
-.hs1() {.headerFont();font-size:(@s1 * @coef * 1em);}
-.hs2() {.headerFont();font-size:(@s2 * @coef * 1em);}
-.hs3() {.headerFont();font-size:(@s3 * @coef * 1em);}
-.hs4() {.headerFont();font-size:(@s4 * @coef * 1em);}
-.hs5() {.headerFont();font-size:(@s5 * @coef * 1em);}
-.hs6() {.headerFont();font-size:(@s6 * @coef * 1em);}
 
 // size function
+//-----------------------------------------------------------
 .s(@size, @base){
     font-size: @size / @base * 1em;
-    line-height: @size / @base * 1.125em;
+}
+
+// REM Size function
+//----------------------------------------------------------------
+.sr(@size){
+    font-size: @size / 12rem;
 }
